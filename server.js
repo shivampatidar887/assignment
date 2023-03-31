@@ -1,4 +1,5 @@
 const app = require("./app");
+require('dotenv').config()
 
 const dotenv= require("dotenv");
 const connectDatabase = require("./middleware/database");
@@ -12,10 +13,10 @@ process.on("uncaughtException",(err)=>{
 
 app.use(bodyParser.json());
 // Use Config
-dotenv.config({path:"./middleware/config.env"});
+// dotenv.config({path:"./middleware/config.env"});
 const port = process.env.PORT ||3024;
-// Connecting to database
 connectDatabase();
+// Connecting to database
 const server = app.listen(port,()=>{
     console.log(`Server is working on http://localhost:${port}`);
 });
